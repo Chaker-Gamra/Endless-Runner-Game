@@ -51,7 +51,7 @@ public class SwipeManager : MonoBehaviour
         }
 
         //Did we cross the distance?
-        if (swipeDelta.magnitude > 125)
+        if (swipeDelta.magnitude > 100)
         {
             //Which direction?
             float x = swipeDelta.x;
