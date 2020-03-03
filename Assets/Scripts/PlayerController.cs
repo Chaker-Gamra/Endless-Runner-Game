@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 direction;
     public float forwardSpeed;
+    public float maxSpeed;
 
     private int desiredLane = 1;//0:left, 1:middle, 2:right
     public float laneDistance = 2.5f;//The distance between tow lanes
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float Gravity = -20;
 
     public Animator animator;
+    private bool isSliding = false;
 
     void Start()
     {
@@ -28,6 +31,11 @@ public class PlayerController : MonoBehaviour
         if (!PlayerManager.isGameStarted)
             return;
 
+        //Increase Speed 
+        if(forwardSpeed < maxSpeed)
+            forwardSpeed += 0.1f * Time.deltaTime;
+
+
         animator.SetBool("isGameStarted", true);
         direction.z = forwardSpeed;
 
@@ -38,10 +46,21 @@ public class PlayerController : MonoBehaviour
             direction.y = -2;
             if (SwipeManager.swipeUp)
                 Jump();
+
+            if (SwipeManager.swipeDown && !isSliding)
+                StartCoroutine(Slide());
         }
         else
+        {
             direction.y += Gravity * Time.deltaTime;
+            if (SwipeManager.swipeDown && !isSliding)
+            {
+                StartCoroutine(Slide());
+                direction.y = -8;
+            }
+                
 
+        }
 
         //Gather the inputs on which lane we should be
         if (SwipeManager.swipeRight)
@@ -95,5 +114,20 @@ public class PlayerController : MonoBehaviour
         {
             PlayerManager.gameOver = true;
         }
+    }
+
+    private IEnumerator Slide()
+    {
+        isSliding = true;
+        animator.SetBool("isSliding", true);
+        controller.center = new Vector3(0, -0.5f, 0);
+        controller.height = 1;
+
+        yield return new WaitForSeconds(1.3f);
+
+        controller.center = Vector3.zero;
+        controller.height = 2;
+        animator.SetBool("isSliding", false);
+        isSliding = false;
     }
 }
