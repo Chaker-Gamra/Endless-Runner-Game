@@ -51,7 +51,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PickUpCoin
     clip: {fileID: 8300000, guid: ec8bece9c4e4c7543a7a0c56fb430b2e, type: 3}
-    volume: 0.1
+    volume: 0.07
     loop: 0
     source: {fileID: 0}
   - name: GameOver
