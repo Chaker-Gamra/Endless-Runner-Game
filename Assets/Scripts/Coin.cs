@@ -13,6 +13,7 @@ public class Coin : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().PlaySound("PickUpCoin");
             PlayerManager.numberOfCoins += 1;
+            PlayerManager.score += 3;
             Destroy(gameObject);
 
         }

@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGameStarted", true);
         direction.z = forwardSpeed;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.17f, groundLayer);
         animator.SetBool("isGrounded", isGrounded);
         if (isGrounded)
         {

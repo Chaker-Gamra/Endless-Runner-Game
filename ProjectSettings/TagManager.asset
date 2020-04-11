@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - side
   layers:
   - Default
   - TransparentFX

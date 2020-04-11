@@ -46,12 +46,12 @@ MonoBehaviour:
   sounds:
   - name: MainTheme
     clip: {fileID: 8300000, guid: db03a3dc04d9aff489a3430084a536e3, type: 3}
-    volume: 0.1
+    volume: 0.15
     loop: 1
     source: {fileID: 0}
   - name: PickUpCoin
     clip: {fileID: 8300000, guid: ec8bece9c4e4c7543a7a0c56fb430b2e, type: 3}
-    volume: 0.07
+    volume: 0.08
     loop: 0
     source: {fileID: 0}
   - name: GameOver

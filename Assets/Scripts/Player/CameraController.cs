@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         offset = transform.position - target.position;
     }
 

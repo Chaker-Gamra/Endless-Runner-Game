@@ -10,32 +10,47 @@ public class PlayerManager : MonoBehaviour
     public GameObject startingText;
 
     public static int numberOfCoins;
-    public Text coinsText;
+    public static int score;
+    public Text coinsScoreText;
 
+    public static bool isGamePaused;
+
+    public GameObject[] characterPrefabs;
+
+    private void Awake()
+    {
+        int selctedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        Instantiate(characterPrefabs[selctedCharacter], transform.position, transform.rotation);
+    }
     void Start()
     {
         Time.timeScale = 1;
-        gameOver = false;
-        isGameStarted = false;
-        numberOfCoins = 0;
+        gameOver = isGameStarted = isGamePaused= false;
+        numberOfCoins = score = 0;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gameOver)
         {
-            gameOverPanel.SetActive(true);
             Time.timeScale = 0;
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins", 0) + numberOfCoins);
+            if (score > PlayerPrefs.GetInt("HighScore",0))
+                PlayerPrefs.SetInt("HighScore", score);
+
+            gameOverPanel.SetActive(true);
+            Destroy(gameObject);
         }
 
-        coinsText.text = "Coins: " + numberOfCoins;
+        coinsScoreText.text = "coins:" + numberOfCoins+"\nscore:"+score;
 
         if (SwipeManager.tap  && !isGameStarted)
         {
             isGameStarted = true;
             Destroy(startingText);
         }
+
 
     }
 }

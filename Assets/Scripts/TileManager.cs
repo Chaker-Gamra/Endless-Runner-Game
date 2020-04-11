@@ -9,9 +9,10 @@ public class TileManager : MonoBehaviour
     public int numberOfTiles = 3;
     private List<GameObject> activeTiles = new List<GameObject>();
 
-    public Transform playerTransform;
+    private Transform playerTransform;
     void Start()
     {
+        
         for (int i = 0; i < numberOfTiles; i++)
         {
             if(i==0)
@@ -19,7 +20,9 @@ public class TileManager : MonoBehaviour
             else
                 SpawnTile(Random.Range(0, tilePrefabs.Length));
         }
-            
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
     void Update()
     {
@@ -42,5 +45,6 @@ public class TileManager : MonoBehaviour
     {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
+        PlayerManager.score += 2;
     }
 }
