@@ -45,22 +45,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainTheme
-    clip: {fileID: 8300000, guid: db03a3dc04d9aff489a3430084a536e3, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 97ef5fec45cf5c94b87bd251ad486367, type: 3}
+    volume: 0.4
+    pitch: 1.1
     loop: 1
     source: {fileID: 0}
-  - name: PickUpCoin
+  - name: PickUp
     clip: {fileID: 8300000, guid: ec8bece9c4e4c7543a7a0c56fb430b2e, type: 3}
     volume: 0.3
+    pitch: 2
     loop: 0
     source: {fileID: 0}
   - name: GameOver
-    clip: {fileID: 8300000, guid: 2376ec10dad2f51488c07fb0cae9a5f5, type: 3}
+    clip: {fileID: 8300000, guid: cad22f0977e43a242b1b9dadd39c80d3, type: 3}
     volume: 0.8
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ButtonClick
-    clip: {fileID: 8300000, guid: 47ea8d2f17c8058469fa38492f3c0828, type: 3}
+    clip: {fileID: 8300000, guid: fefe9856b78dae74c9c86862f2e7dbc2, type: 3}
     volume: 0.8
+    pitch: 1
     loop: 0
     source: {fileID: 0}
